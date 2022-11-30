@@ -55,7 +55,7 @@ const SearchResult = () => {
           <div className={styles.cards_container}>
             {fetchedData?.map((card, index) => {
               return (
-                <div className={styles.card}>
+                <div key={index} className={styles.card}>
                   <Card
                     key={index}
                     imageSource={card.imageSource}
