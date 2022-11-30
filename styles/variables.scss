@@ -1,0 +1,75 @@
+:root {
+  /* Color */
+  --mainBackground: #0f171e;
+  --cardBackground: #19232c;
+  --textBlue: #1399de;
+  --textWhite: #fff;
+  --textGray: #8197a4;
+
+  /* Padding */
+  --paddingLeftRight: 0 2rem 0 2rem;
+
+  /* Font Size */
+  --fontSizeTitle: 1.2rem;
+  --fontSizeSubtitle: 0.9rem;
+  --fontSizeDesc: 0.75rem;
+  --fontSizeSearch: 0.7rem;
+  --fontSizeLink: 0.9rem;
+}
+
+/* Responsive starts here */
+/* Small breakpoint */
+@media (min-width: 400px) {
+  :root {
+    --paddingLeftRight: 0 3rem 0 3rem;
+  }
+}
+
+/* Medium breakpoint */
+@media (min-width: 600px) {
+  :root {
+    --paddingLeftRight: 0 5rem 0 5rem;
+  }
+}
+
+/* Large breakpoint */
+@media (min-width: 840px) {
+  :root {
+    --paddingLeftRight: 0 5rem 0 5rem;
+    --fontSizeTitle: 1.3rem;
+    --fontSizeSubtitle: 1rem;
+    --fontSizeDesc: 0.9rem;
+  }
+}
+
+/* XLarge breakpoint */
+@media (min-width: 960px) {
+  :root {
+    --paddingLeftRight: 0 7rem 0 7rem;
+    --fontSizeTitle: 1.4rem;
+    --fontSizeSubtitle: 1.1rem;
+    --fontSizeDesc: 1rem;
+    --fontSizeSearch: 0.9rem;
+    --fontSizeLink: 1.05rem;
+  }
+}
+
+/* XXLarge breakpoint */
+@media (min-width: 1280px) {
+  :root {
+    --paddingLeftRight: 0 8rem 0 8rem;
+    --fontSizeTitle: 1.6rem;
+    --fontSizeSubtitle: 1.2rem;
+    --fontSizeDesc: 1.1rem;
+  }
+}
+
+/* XXXLarge breakpoint */
+@media (min-width: 1440px) {
+  :root {
+    --paddingLeftRight: 0 10rem 0 10rem;
+    --fontSizeTitle: 2rem;
+    --fontSizeSubtitle: 1.25rem;
+    --fontSizeDesc: 1rem;
+  }
+}

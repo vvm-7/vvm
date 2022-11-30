@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+.video_count {
+  color: var(--textWhite);
+  font-weight: bold;
+  font-size: var(--fontSizeSubtitle);
+}
+
+.video_switcher {
+  display: flex;
+  flex-direction: column;
+}

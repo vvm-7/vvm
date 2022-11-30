@@ -1,0 +1,131 @@
+@use "../../lib/packages/design-tokens/breakpoint" as b;
+
+.container_main {
+  height: 250px; /* for container's height  */
+  display: flex;
+  justify-content: center;
+}
+
+/*Container for mainBanner page*/
+.banner_container_main {
+  position: absolute;
+  height: 250px; /* for image height  */
+  width: 100%;
+}
+
+.content_main {
+  top: 90px;
+  height: 160px; /*to adjust the overflow of 110px due to total height 400px */
+  width: 279px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.row_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_container_main {
+  position: relative;
+  margin-right: 0.6rem;
+  height: 50px;
+  width: 50px;
+}
+
+.logo_text_main {
+  color: var(--textWhite);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.tagline_main,
+.follow_main {
+  font-weight: 500;
+  color: var(--textWhite);
+  font-size: 0.7rem;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+/*Container for infoBanner page*/
+.container_gameInfo {
+  height: 250px; /* for container's height  */
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.content_gameInfo {
+  margin-top: -5rem;
+  margin-bottom: 1rem;
+  margin-left: 1.7rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.text_gameInfo {
+  /* color: #f5b027; */
+  color: var(--textBlue);
+  font-weight: bold;
+  font-size: var(--fontSizeTitle);
+}
+
+.youtube_handle_gameInfo {
+  font-weight: bold;
+  width: 100%;
+  color: var(--textWhite);
+  font-size: var(--fontSizeDesc);
+}
+
+.banner_container_gameInfo {
+  position: relative;
+  background-color: black;
+  height: 250px;
+  width: 100%;
+  opacity: 0.6;
+}
+
+@include b.breakpoint(large) {
+  .container_main,
+  .banner_container_main {
+    height: 350px; /* for image height  */
+  }
+
+  .content_main {
+    top: 130px;
+    height: 220px; /*to adjust the overflow of 110px due to total height 400px */
+    width: 370px;
+  }
+
+  .logo_text_main {
+    font-size: 1.7rem;
+  }
+
+  .tagline_main,
+  .follow_main {
+    font-size: 1rem;
+  }
+
+  .container_gameInfo {
+    flex-direction: row;
+  }
+
+  .content_gameInfo {
+    margin: 0;
+  }
+}
+
+@include b.breakpoint(xxlarge) {
+  .container_gameInfo,
+  .banner_container_gameInfo {
+    height: 350px;
+  }
+}

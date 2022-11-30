@@ -1,0 +1,18 @@
+.container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: var(--cardBackground);
+}
+
+.heading {
+  padding-bottom: 1rem;
+  font-weight: bold;
+  color: var(--textBlue);
+}
+
+.desc {
+  color: var(--textWhite);
+  font-size: 0.9rem;
+}

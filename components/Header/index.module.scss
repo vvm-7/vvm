@@ -1,0 +1,132 @@
+@use "../../lib/packages//design-tokens/breakpoint" as b;
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px 15px 15px;
+  height: 40px;
+
+  /* position: fixed; */
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: 200;
+
+  text-size-adjust: 100%;
+  background-color: #0f171e;
+  background-image: linear-gradient(180deg, #1b2530 0, rgba(27, 37, 48, 0.85));
+  background-repeat: repeat-x;
+  line-height: 24px;
+}
+
+.form_container {
+  display: flex;
+  align-items: center;
+}
+
+.form {
+  border: none;
+  background: #f2f3f8;
+  color: #71747d;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-right: 0.8rem;
+  font-size: var(--fontSizeSearch);
+}
+
+.form_button {
+  height: 25px;
+  width: 30px;
+
+  color: var(--textWhite);
+  cursor: pointer;
+  transition: all 0.7s ease-in-out;
+}
+
+.form_button:hover {
+  animation: tilt-shaking 0.7s infinite;
+  color: var(--textBlue);
+}
+
+.form:focus {
+  outline: none;
+}
+
+.menu_items {
+  display: flex;
+  align-items: center;
+}
+
+.menu_items > * {
+  margin-right: 20px;
+}
+
+.link {
+  font-size: var(--fontSizeLink);
+  color: rgba(242, 244, 246, 0.9);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+  color: #fff;
+  text-underline-offset: 0.35rem;
+  text-decoration: underline;
+}
+
+.logo {
+  margin-top: 0.7rem;
+  height: 32px;
+  width: 30px;
+}
+
+@include b.breakpoint(xlarge) {
+  .container {
+    padding: 12px 15px 15px 15px;
+    height: 56px;
+  }
+
+  .form {
+    margin-left: 1rem;
+  }
+
+  .logo {
+    height: 42px;
+    width: 40px;
+  }
+
+  .form_button {
+    height: 30px;
+    width: 33px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form_container {
+    display: none;
+  }
+
+  .form {
+    display: none;
+  }
+}

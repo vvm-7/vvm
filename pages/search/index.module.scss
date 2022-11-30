@@ -1,0 +1,21 @@
+.heading {
+  margin-top: 1rem;
+  padding: var(--paddingLeftRight);
+  font-weight: 500;
+  color: var(--textWhite);
+  font-size: var(--fontSizeSubtitle);
+}
+
+.cards_container {
+  padding: var(--paddingLeftRight);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+.coming_soon_container {
+  padding: var(--paddingLeftRight);
+}

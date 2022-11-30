@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--textWhite);
+}
+
+.heading {
+  font-size: var(--fontSizeTitle);
+  font-weight: bold;
+}
+
+.vl {
+  margin: 0 1rem;
+  border-right: 6px solid var(--textBlue);
+  height: 3rem;
+}

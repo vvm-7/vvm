@@ -1,0 +1,60 @@
+@use "../../lib/packages/design-tokens/breakpoint" as b;
+
+.container {
+  height: 150px;
+  width: 260px;
+  margin-right: 1rem;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.image_container {
+  position: relative;
+  min-height: 126px;
+  min-width: 260px;
+}
+
+.card_title {
+  font-size: 0.8rem;
+  padding: 2px;
+  color: var(--textWhite);
+}
+
+@include b.breakpoint(desktop) {
+  .container {
+    height: 180px;
+    width: 280px;
+  }
+
+  .image_container {
+    position: relative;
+    min-height: 155px;
+    min-width: 280px;
+  }
+
+  .card_title {
+    font-size: 0.85rem;
+    padding: 2px;
+  }
+}
+
+@include b.breakpoint(xlarge) {
+  .container {
+    height: 210px;
+    width: 330px;
+  }
+
+  .image_container {
+    position: relative;
+    min-height: 180px;
+    min-width: 330px;
+  }
+
+  .card_title {
+    font-size: 1rem;
+    padding: 2px;
+  }
+}

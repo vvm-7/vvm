@@ -1,0 +1,50 @@
+.container {
+  position: relative;
+  overflow: hidden;
+  /* display: flex;
+  align-items: center; */
+}
+
+.cards_container {
+  /* position: relative; */
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.backward,
+.forward {
+  border: none;
+  padding: 0;
+  height: 100%;
+  position: absolute;
+
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  /* transition: 0.9s; */
+}
+
+.forward {
+  right: 0;
+}
+
+.backward > *,
+.forward > * {
+  font-size: 0.2rem;
+  background-color: rgba(33, 33, 33, 0.268);
+  /* box-shadow: 0px 0px 10px 1px black; */
+  color: white;
+  width: 2rem;
+  height: 30%;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.backward :hover,
+.forward :hover {
+  background-color: rgba(33, 33, 33, 0.627);
+}

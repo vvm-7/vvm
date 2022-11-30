@@ -1,0 +1,46 @@
+.container {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  background-color: #19232c;
+}
+
+.play_me {
+  cursor: pointer;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title_container {
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  align-items: center;
+}
+
+.title_button {
+  margin-right: 0.7rem;
+  font-size: var(--fontSizeTitle);
+  color: var(--textWhite);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.title_button:hover {
+  color: var(--textBlue);
+}
+
+.title {
+  font-size: var(--fontSizeSubtitle);
+  color: var(--textWhite);
+  font-weight: 500;
+}
+
+.description {
+  padding: 0rem 1.5rem;
+  font-size: var(--fontSizeDesc);
+  color: var(--textGray);
+}
