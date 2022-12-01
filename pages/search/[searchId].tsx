@@ -3,12 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import ComingSoon from "../../components/ComingSoon";
 import Header from "../../components/Header";
-import {
-  baseApi_address,
-  baseApi_address_https,
-  localhost_address,
-  localhost_address_https,
-} from "../../lib/constants/constant";
+import { localhost_address_https } from "../../lib/constants/constant";
 import { Games } from "../../lib/types";
 import styles from "./index.module.scss";
 
@@ -37,11 +32,7 @@ const SearchResult = () => {
         const data = await res?.json();
         setFetchedData(data);
       })();
-    //How it works????
-    // {
-    //   console.log(searchText);
-    //   console.log(fetchedData);
-    // }
+    //How it works????{console.log(searchText);console.log(fetchedData);}
     return () => {};
   }, [searchId]);
 
@@ -52,35 +43,35 @@ const SearchResult = () => {
         searchText={searchText}
         setSearchText={setSearchText}
       />
-
-      {fetchedData?.length > 0 ? (
-        <>
-          <div className={styles.heading}>
-            Search Result ({fetchedData?.length})
+      {fetchedData?.length > 0 &&
+        (fetchedData[0].gameId == -777 ? (
+          <div className={styles.coming_soon_container}>
+            <ComingSoon
+              heading="NO DATA FOUND"
+              desc="Please search for other games. No videos are uploaded for the content you are searching"
+            />
           </div>
-          <div className={styles.cards_container}>
-            {fetchedData?.map((card, index) => {
-              return (
-                <div key={index} className={styles.card}>
-                  <Card
-                    key={index}
-                    imageSource={card.imageSource}
-                    gameTitle={card.gameTitle}
-                    gameInfoPageLink={`/info/game_${card.gameId + 1000}`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <div className={styles.coming_soon_container}>
-          <ComingSoon
-            heading="NO DATA FOUND"
-            desc="Please search for other games. No videos are uploaded for the content you are searching"
-          />
-        </div>
-      )}
+        ) : (
+          <>
+            <div className={styles.heading}>
+              Search Result ({fetchedData?.length})
+            </div>
+            <div className={styles.cards_container}>
+              {fetchedData?.map((card, index) => {
+                return (
+                  <div key={index} className={styles.card}>
+                    <Card
+                      key={index}
+                      imageSource={card.imageSource}
+                      gameTitle={card.gameTitle}
+                      gameInfoPageLink={`/info/game_${card.gameId + 1000}`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ))}
     </div>
   );
 };
