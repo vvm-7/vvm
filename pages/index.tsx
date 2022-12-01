@@ -10,6 +10,7 @@ import {
   GENRE,
   localhost_address,
   baseApi_address,
+  baseApi_address_https,
 } from "../lib/constants/constant";
 
 const Main = ({ data }: { data: Games[] }) => {
@@ -21,21 +22,6 @@ const Main = ({ data }: { data: Games[] }) => {
     [homeData, setHomeData] = useState<CarouselData[]>([]);
 
   const [searchText, setSearchText] = useState<string>("");
-  // const [searchedData, setSearchedData] = useState();
-  // const showSearchResult = async () => {
-  //   // const res = await fetch(`${baseApi_address}/search/${searchText}`, {
-  //   const res = await fetch(`${localhost_address}/search/${searchText}`, {
-  //     method: "GET",
-  //     mode: "cors",
-  //     cache: "no-cache",
-  //     credentials: "same-origin",
-  //     // headers: headers,
-  //     redirect: "follow",
-  //     referrerPolicy: "no-referrer",
-  //   });
-  //   const data = await res?.json();
-  //   setSearchedData(data);
-  // };
 
   useEffect(() => {
     if (
@@ -102,7 +88,11 @@ const Main = ({ data }: { data: Games[] }) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${baseApi_address}/game/`, {
+  const https = require("https");
+  const httpsAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+  const res = await fetch(`${baseApi_address_https}/game/`, {
     // const res = await fetch(`${localhost_address}/game`, {
     method: "GET",
     mode: "cors",
@@ -111,6 +101,7 @@ export const getStaticProps = async () => {
     // headers: headers,
     redirect: "follow",
     referrerPolicy: "no-referrer",
+    agent: httpsAgent,
   });
   const data: CarouselData[] = await res?.json();
 

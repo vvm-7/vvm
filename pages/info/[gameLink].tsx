@@ -8,6 +8,7 @@ import ComingSoon from "../../components/ComingSoon";
 import { useState } from "react";
 import {
   baseApi_address,
+  baseApi_address_https,
   localhost_address,
 } from "../../lib/constants/constant";
 import type { Games } from "../../lib/types";
@@ -103,19 +104,23 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const gameLink: string = context.params.gameLink;
   const gameId = parseInt(gameLink.substring(5)) - 1000;
-  // console.log(gameLink + " " + gameId);
-
   let data: Games | {} = {};
-  const res = await fetch(`${baseApi_address}/game/${gameId}`, {
+
+  const https = require("https");
+  const httpsAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
+  const res = await fetch(`${baseApi_address_https}/game/${gameId}`, {
     // const res = await fetch(`${localhost_address}/game/${gameId}`, {
     method: "GET",
     mode: "cors",
     cache: "no-cache",
     credentials: "same-origin",
-    // headers: headers,
     redirect: "follow",
     referrerPolicy: "no-referrer",
-  });
+    agent: httpsAgent,
+  }).catch(() => {});
 
   data = await res?.json();
   return {

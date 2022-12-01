@@ -5,7 +5,9 @@ import ComingSoon from "../../components/ComingSoon";
 import Header from "../../components/Header";
 import {
   baseApi_address,
+  baseApi_address_https,
   localhost_address,
+  localhost_address_https,
 } from "../../lib/constants/constant";
 import { Games } from "../../lib/types";
 import styles from "./index.module.scss";
@@ -17,20 +19,24 @@ const SearchResult = () => {
   const [fetchedData, setFetchedData] = useState<Games[]>([]);
 
   useEffect(() => {
-    (async () => {
-      const res = await fetch(`${baseApi_address}/search/${query.searchId}`, {
-        // const res = await fetch(`${localhost_address}/search/${query.searchId}`, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        // headers: headers,
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-      });
-      const data = await res?.json();
-      setFetchedData(data);
-    })();
+    searchId &&
+      (async () => {
+        // const res = await fetch(
+        //   `${baseApi_address_https}/search/${query.searchId}`,
+        const res = await fetch(
+          `${localhost_address_https}/search/${query.searchId}`,
+          {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+          }
+        ).catch(() => {});
+        const data = await res?.json();
+        setFetchedData(data);
+      })();
     //How it works????
     // {
     //   console.log(searchText);
