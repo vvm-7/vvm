@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import ComingSoon from "../../components/ComingSoon";
 import Header from "../../components/Header";
-import { localhost_address_https } from "../../lib/constants/constant";
+import {
+  baseApi_address_https,
+  localhost_address_https,
+} from "../../lib/constants/constant";
 import { Games } from "../../lib/types";
 import styles from "./index.module.scss";
 
@@ -16,10 +19,9 @@ const SearchResult = () => {
   useEffect(() => {
     searchId &&
       (async () => {
-        // const res = await fetch(
-        //   `${baseApi_address_https}/search/${query.searchId}`,
         const res = await fetch(
-          `${localhost_address_https}/search/${query.searchId}`,
+          `${baseApi_address_https}/search/${query.searchId}`,
+          //`${localhost_address_https}/search/${query.searchId}`,
           {
             method: "GET",
             mode: "cors",

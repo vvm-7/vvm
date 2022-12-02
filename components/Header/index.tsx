@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import Link from "next/link";
 import { BiSearchAlt } from "react-icons/bi";
 import styles from "./index.module.scss";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type HeaderProp = {
   pageName: string;
@@ -16,27 +16,40 @@ const Header: NextPage<HeaderProp> = ({
   searchText,
   setSearchText,
 }) => {
-  const openSearch = async () => {
-    //await showSearchResult();
-    const newWindow = window.open(
-      `/search/${searchText}`,
-      "_self",
-      "noopener,noreferrer"
-    );
-    if (newWindow) newWindow.opener = null;
+  const [mobileSearchForm, setMobileSearchForm] = useState(false);
+  const openSearch = () => {
+    if (searchText !== "") {
+      const newWindow = window.open(
+        `/search/${searchText}`,
+        "_self",
+        "noopener,noreferrer"
+      );
+      if (newWindow) newWindow.opener = null;
+      setMobileSearchForm(false);
+    } else if (mobileSearchForm == false) {
+      setMobileSearchForm(true);
+    } else if (searchText === "" && mobileSearchForm == true) {
+      setMobileSearchForm(false);
+    }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.menu_items}>
+      <div
+        className={`${styles.menu_items} ${
+          mobileSearchForm ? styles.hide_visibility : styles.show_visibility
+        }`}
+      >
         <Link href="/">
           <a>
             <img className={styles.logo} src="/assets/logo.png" />
           </a>
         </Link>
+
         {pageName !== "Home" && (
           <span className={`${styles.link} ${styles.active}`}>{pageName}</span>
         )}
+
         <Link href="/">
           <a
             className={`${styles.link} ${
@@ -53,7 +66,9 @@ const Header: NextPage<HeaderProp> = ({
       </div>
       <div className={styles.form_container}>
         <input
-          className={styles.form}
+          className={`${styles.search_form} ${
+            mobileSearchForm ? styles.show_visibility : styles.hide_visibility
+          }`}
           type="text"
           placeholder="Search Here"
           value={searchText}
