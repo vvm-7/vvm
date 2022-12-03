@@ -5,8 +5,5 @@ export const GENRE = {
   StayTuned: "StayTuned",
 };
 
-export const baseApi_address = "http://65.1.93.196:8080";
-export const localhost_address = "http://localhost:8080";
-
-export const baseApi_address_https: string = "https://65.1.93.196:443";
-export const localhost_address_https: string = "https://localhost:443";
+export const baseApi_address: string = "https://play.withrishi.live";
+export const localhost_address: string = "http://localhost:80";

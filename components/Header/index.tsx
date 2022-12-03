@@ -41,26 +41,41 @@ const Header: NextPage<HeaderProp> = ({
         }`}
       >
         <Link href="/">
-          <a>
+          <a
+            className={` ${
+              mobileSearchForm ? styles.display_none : styles.display_flex
+            }`}
+          >
             <img className={styles.logo} src="/assets/logo.png" />
           </a>
         </Link>
 
         {pageName !== "Home" && (
-          <span className={`${styles.link} ${styles.active}`}>{pageName}</span>
+          <span
+            className={`${styles.link} ${styles.active} ${
+              mobileSearchForm ? styles.display_none : styles.display_flex
+            }`}
+          >
+            {pageName}
+          </span>
         )}
 
         <Link href="/">
           <a
             className={`${styles.link} ${
               pageName === "Home" ? styles.active : ""
-            }`}
+            } ${mobileSearchForm ? styles.display_none : styles.display_flex}`}
           >
             Home
           </a>
         </Link>
 
-        <a className={styles.link} href="https://rishi-mishra.netlify.app/">
+        <a
+          className={`${styles.link} ${
+            mobileSearchForm ? styles.display_none : styles.display_flex
+          }`}
+          href="https://rishi-mishra.netlify.app/"
+        >
           About
         </a>
       </div>
@@ -68,7 +83,8 @@ const Header: NextPage<HeaderProp> = ({
         <input
           className={`${styles.search_form} ${
             mobileSearchForm ? styles.show_visibility : styles.hide_visibility
-          }`}
+          }
+          ${mobileSearchForm ? styles.display_flex : styles.display_none}`}
           type="text"
           placeholder="Search Here"
           value={searchText}

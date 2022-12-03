@@ -6,11 +6,7 @@ import Header from "../../components/Header";
 import VideoCard from "../../components/VideoCard";
 import ComingSoon from "../../components/ComingSoon";
 import { useState } from "react";
-import {
-  baseApi_address,
-  baseApi_address_https,
-  localhost_address,
-} from "../../lib/constants/constant";
+import { baseApi_address } from "../../lib/constants/constant";
 import type { Games } from "../../lib/types";
 import styles from "./index.module.scss";
 
@@ -106,14 +102,8 @@ export const getStaticProps = async (context: any) => {
   const gameId = parseInt(gameLink.substring(5)) - 1000;
   let data: Games | {} = {};
 
-  // const https = require("https");
-  // const httpsAgent = new https.Agent({
-  //   rejectUnauthorized: false,
-  // });
-
   try {
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-    const res = await fetch(`${baseApi_address_https}/game/${gameId}`, {
+    const res = await fetch(`${baseApi_address}/game/${gameId}`, {
       // const res = await fetch(`${localhost_address}/game/${gameId}`, {
       method: "GET",
       mode: "cors",
@@ -121,7 +111,6 @@ export const getStaticProps = async (context: any) => {
       credentials: "same-origin",
       redirect: "follow",
       referrerPolicy: "no-referrer",
-      // agent: httpsAgent,
     });
     data = await res?.json();
   } catch (error) {

@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Home from "../components/Home";
 import { data } from "../lib/mockAPI/homePageMock";
 import { CarouselData, Games } from "../lib/types";
-import { GENRE, baseApi_address_https } from "../lib/constants/constant";
+import { GENRE, baseApi_address } from "../lib/constants/constant";
 
 const Main = ({ data }: { data: Games[] }) => {
   const Ongoing: Games[] = [],
@@ -83,38 +83,19 @@ const Main = ({ data }: { data: Games[] }) => {
 };
 
 export const getStaticProps = async () => {
-  // const https = require("https");
-  // const httpsAgent = new https.Agent({
-  //   rejectUnauthorized: false,
-  // });
-
   let data: CarouselData[] = [];
-  try {
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-    const res = await fetch(`${baseApi_address_https}/game/`, {
-      // const res = await fetch(`${localhost_address}/game`, {
-      method: "GET",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      // headers: headers,
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-    });
-    data = await res?.json();
-  } catch (error) {
-    console.log(error);
-  }
-
-  // const res= function fetch({input:`${baseApi_address_https}/game/`,{
-  //   method: "GET",
-  //   mode: "cors",
-  //   cache: "no-cache",
-  //   credentials: "same-origin",
-  //   // headers: headers,
-  //   redirect: "follow",
-  //   referrerPolicy: "no-referrer",
-  //   agent: httpsAgent,}}:{input: RequestInfo | URL, init?: RequestInit | undefined}){}
+  const res = await fetch(`${baseApi_address}/game/`, {
+    // const res = await fetch(`${localhost_address}/game`, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+  }).catch((err) => {
+    //console.log(err.response.data);
+  });
+  data = await res?.json();
 
   return {
     props: {
